@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
+import { SessionProvider } from './components/SessionProvider'
+import UserButton from './components/UserButton'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,18 +18,22 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en'>
-      <body className={`${inter.className} px-2 md:px-5 dark`}>
-        <header className='text-white font-bold bg-orange-800 text-2xl p-6 mb-3 rounded-b-lg  shadow-lg flex'>
-          <div className='flex flex-grow'>
-            <Link href='/'>Czat</Link>
+    <SessionProvider>
+      <html lang='en'>
+        <body className={`${inter.className} dark`}>
+          <header className='text-white font-bold bg-orange-800 text-2xl p-6 mb-3 rounded-b-lg shadow-lg flex'>
+            <div className='flex flex-grow'>
+              <Link href='/'>Czat</Link>
+            </div>
+            <div>
+              <UserButton />
+            </div>
+          </header>
+          <div className='flex flex-col md:flex-row'>
+            <div className='flex-grow'>{children}</div>
           </div>
-          <div></div>
-        </header>
-        <div className='flex flex-col md:flex-row'>
-          <div className='flex-grow'>{children}</div>
-        </div>
-      </body>
-    </html>
+        </body>
+      </html>
+    </SessionProvider>
   )
 }
