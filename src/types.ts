@@ -17,4 +17,5 @@ export interface StoredMessage extends Message {
 
 export interface ChatWithMessages extends Chat {
   messages: StoredMessage[]
+  userEmail: string
 }
