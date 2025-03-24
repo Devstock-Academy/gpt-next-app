@@ -14,8 +14,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  chats,
 }: Readonly<{
   children: React.ReactNode
+  chats: React.ReactNode
 }>) {
   return (
     <SessionProvider>
@@ -31,7 +33,8 @@ export default function RootLayout({
               <UserButton />
             </div>
           </header>
-          <div className='flex flex-col md:flex-row'>
+          <div className='flex flex-col md:flex-row p-5'>
+            {chats}
             <div className='flex-grow'>{children}</div>
           </div>
         </body>
