@@ -20,8 +20,10 @@ export default function RootLayout({
   return (
     <SessionProvider>
       <html lang='en'>
-        <body className={`${inter.className} dark`}>
-          <header className='text-white font-bold bg-orange-800 text-2xl p-6 mb-3 rounded-b-lg shadow-lg flex'>
+        <body
+          className={`${inter.className} dark bg-zinc-900 text-zinc-100 border-zinc-800`}
+        >
+          <header className='text-white font-bold bg-zinc-700 text-2xl p-6 mb-3 rounded-b-lg shadow-lg flex'>
             <div className='flex flex-grow'>
               <Link href='/'>Czat</Link>
             </div>

@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { getCompletion } from '@/server-actions/getCompletion'
 import { useRouter } from 'next/navigation'
+import Transcript from './Transcript'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -42,25 +43,7 @@ export default function Chat({
 
   return (
     <div className='flex flex-col'>
-      {messages.map((msg, i) => (
-        <div
-          key={i}
-          className={`mb-5 flex flex-col ${
-            msg.role === 'user' ? 'items-end' : 'items-start'
-          }`}
-        >
-          <div
-            className={`${
-              msg.role === 'user'
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-200 text-black'
-            } rounded-md py-2 px-8`}
-          >
-            {msg.content}
-          </div>
-        </div>
-      ))}
-
+      <Transcript messages={messages} truncate={false} />
       <div className='flex border-t-2 border-gray-300 pt-3 mt-3'>
         <Input
           className='flex-grow text-xl'
@@ -71,6 +54,7 @@ export default function Chat({
             if (e.key === 'Enter') onClick()
           }}
         />
+
         <Button onClick={onClick} className='ml-3 text-xl'>
           Wyślij
         </Button>
